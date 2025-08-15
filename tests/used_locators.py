@@ -18,10 +18,10 @@ class Locators:
 
     # Поле "Пароль" на форме регистрации/логина
     field_password = (By.XPATH, ".//input[@name='Пароль']")
-    
+
     # Кнопка "Зарегистрироваться" на форме регистрации
-    registration_btn = (By.XPATH, ".//button[text()='Зарегистрироваться']")  
-    
+    registration_btn = (By.XPATH, ".//button[text()='Зарегистрироваться']")
+
     # Кнопка "Войти" на форме логина
     login_btn = (
         By.XPATH,
@@ -33,3 +33,5 @@ class Locators:
         By.XPATH,
         ".//*[@id='root']/div/main/section[2]/div/button[text()='Оформить заказ']",
     )
+    # Сообщение о некорректном пароле на странице регистрации
+    password_error_message = (By.XPATH, ".//p[text()='Некорректный пароль']")
