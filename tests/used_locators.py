@@ -41,3 +41,9 @@ class Locators:
         By.XPATH,
         ".//*[@id='root']/div/main/section[2]/div/button[text()='Войти в аккаунт']",
     )
+
+    # Кнопка «Личный кабинет» на главной странице
+    account_btn_main = (
+        By.XPATH,
+        ".//a[p[text()='Личный Кабинет']]",
+    )
