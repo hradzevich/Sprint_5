@@ -47,3 +47,9 @@ class Locators:
         By.XPATH,
         ".//a[p[text()='Личный Кабинет']]",
     )
+
+    # Кнопка "Войти" на странице регистрации
+    login_btn_registration = (By.XPATH, ".//p[text()='Уже зарегистрированы?']/a[@href and text()='Войти']")
+    
+    # Кнопка "Войти" на странице восстановления пароля
+    login_btn_rest_password = (By.XPATH, ".//p[text()='Вспомнили пароль?']/a[@href and text()='Войти']")
