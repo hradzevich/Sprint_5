@@ -35,7 +35,8 @@ class TestLoginViaLoginButton:
         # Кликнем на кнопку "Войти"
         chrome_driver.find_element(*loc.login_btn).click()
 
-        # Добавим явное ожидание, что кнопка "Оформить заказ", доступная только авторизованным пользователям, загрузилась на странице
+        # Добавим явное ожидание, что кнопка "Оформить заказ", доступная только авторизованным пользователям, 
+        # загрузилась на странице
         WebDriverWait(chrome_driver, 10).until(
             EC.visibility_of_element_located((loc.place_order_btn))
         )
@@ -73,7 +74,8 @@ class TestLoginViaAccountButton:
         # Кликнем на кнопку "Войти"
         chrome_driver.find_element(*loc.login_btn).click()
 
-        # Добавим явное ожидание, что кнопка "Оформить заказ", доступная только авторизованным пользователям, загрузилась на странице
+        # Добавим явное ожидание, что кнопка "Оформить заказ", доступная только авторизованным пользователям, 
+        # загрузилась на странице
         WebDriverWait(chrome_driver, 10).until(
             EC.visibility_of_element_located((loc.place_order_btn))
         )
@@ -111,7 +113,8 @@ class TestLoginViaRegistration:
         # Кликнем на кнопку "Войти"
         chrome_driver.find_element(*loc.login_btn).click()
 
-        # Добавим явное ожидание, что кнопка "Оформить заказ", доступная только авторизованным пользователям, загрузилась на странице
+        # Добавим явное ожидание, что кнопка "Оформить заказ", доступная только авторизованным пользователям, 
+        # загрузилась на странице
         WebDriverWait(chrome_driver, 10).until(
             EC.visibility_of_element_located((loc.place_order_btn))
         )
@@ -149,7 +152,8 @@ class TestLoginViaPasswordReset:
         # Кликнем на кнопку "Войти"
         chrome_driver.find_element(*loc.login_btn).click()
 
-        # Добавим явное ожидание, что кнопка "Оформить заказ", доступная только авторизованным пользователям, загрузилась на странице
+        # Добавим явное ожидание, что кнопка "Оформить заказ", доступная только авторизованным пользователям, 
+        # загрузилась на странице
         WebDriverWait(chrome_driver, 10).until(
             EC.visibility_of_element_located((loc.place_order_btn))
         )

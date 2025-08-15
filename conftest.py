@@ -1,7 +1,11 @@
 import pytest
 from selenium import webdriver
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from generation_user_data import UserDataGenerator
 from registered_user_data import RegisteredUser
+from tests import urls
+from tests import used_locators as loc
 
 
 # Фикстура для запуска Chrome
@@ -34,3 +38,18 @@ def user_data():
 def registered_user():
     user = RegisteredUser()
     return user.get_registered_user()
+
+
+# Фикстура для автоматического логина зарегистрированного пользователя
+# Открывает страницу логина, вводит email и пароль из заранее зарегистрированного пользователя,
+# кликает на кнопку "Войти" и возвращает объект драйвера для использования в тестах
+@pytest.fixture
+def user_logged(chrome_driver):
+    chrome_driver.get(urls.login_url)
+    chrome_driver.find_element(*loc.field_email).send_keys(registered_user["email"])
+    chrome_driver.find_element(*loc.field_password).send_keys(
+        registered_user["password"]
+    )
+    WebDriverWait(chrome_driver, 5).until(EC.element_to_be_clickable((*loc.login_btn,)))
+    chrome_driver.find_element(*loc.login_btn).click()
+    return chrome_driver
