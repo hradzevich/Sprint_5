@@ -49,7 +49,23 @@ class Locators:
     )
 
     # Кнопка "Войти" на странице регистрации
-    login_btn_registration = (By.XPATH, ".//p[text()='Уже зарегистрированы?']/a[@href and text()='Войти']")
-    
+    login_btn_registration = (
+        By.XPATH,
+        ".//p[text()='Уже зарегистрированы?']/a[@href and text()='Войти']",
+    )
+
     # Кнопка "Войти" на странице восстановления пароля
-    login_btn_rest_password = (By.XPATH, ".//p[text()='Вспомнили пароль?']/a[@href and text()='Войти']")
+    login_btn_rest_password = (
+        By.XPATH,
+        ".//p[text()='Вспомнили пароль?']/a[@href and text()='Войти']",
+    )
+    
+    # Название раздела "Личный Кабинет" на странице "Личный Кабинет"
+    account_page_title = (By.XPATH, ".//a[@aria-current='page']/p[text()='Личный Кабинет']")
+
+    # Поле "Логин" на на странице "Личный Кабинет"
+    account_field_email = (
+        By.XPATH,
+        ".//ul/li//label[text()='Логин']/following-sibling::input[@disabled]",
+    )
+

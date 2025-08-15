@@ -44,12 +44,20 @@ def registered_user():
 # Открывает страницу логина, вводит email и пароль из заранее зарегистрированного пользователя,
 # кликает на кнопку "Войти" и возвращает объект драйвера для использования в тестах
 @pytest.fixture
-def user_logged(chrome_driver):
+def user_logged_driver(chrome_driver, registered_user):
     chrome_driver.get(urls.login_url)
-    chrome_driver.find_element(*loc.field_email).send_keys(registered_user["email"])
-    chrome_driver.find_element(*loc.field_password).send_keys(
+    chrome_driver.find_element(*loc.Locators.field_email).send_keys(
+        registered_user["email"]
+    )
+    chrome_driver.find_element(*loc.Locators.field_password).send_keys(
         registered_user["password"]
     )
-    WebDriverWait(chrome_driver, 5).until(EC.element_to_be_clickable((*loc.login_btn,)))
-    chrome_driver.find_element(*loc.login_btn).click()
+    WebDriverWait(chrome_driver, 5).until(
+        EC.element_to_be_clickable((*loc.Locators.login_btn,))
+    )
+    chrome_driver.find_element(*loc.Locators.login_btn).click()
+
+    WebDriverWait(chrome_driver, 10).until(
+        EC.visibility_of_element_located((loc.Locators.place_order_btn))
+    )
     return chrome_driver
