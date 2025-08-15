@@ -35,3 +35,9 @@ class Locators:
     )
     # Сообщение о некорректном пароле на странице регистрации
     password_error_message = (By.XPATH, ".//p[text()='Некорректный пароль']")
+
+    # Кнопка «Войти в аккаунт» на главной странице
+    go_to_account_main_btn = (
+        By.XPATH,
+        ".//*[@id='root']/div/main/section[2]/div/button[text()='Войти в аккаунт']",
+    )

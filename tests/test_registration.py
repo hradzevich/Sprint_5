@@ -6,7 +6,7 @@ from used_locators import Locators as loc
 import random as r
 
 
-class TestRegistrationSuccess:
+class TestRegistration:
     # Проверка регистрации нового пользователя с валидными логином(email в формате логин@домен) и паролем(длина более 6 символов)
     def test_registration_valid_credentials_success(self, chrome_driver, user_data):
 
@@ -34,8 +34,6 @@ class TestRegistrationSuccess:
         # Ждём и проверяем, что URL изменился на страницу логина
         assert WebDriverWait(chrome_driver, 10).until(EC.url_to_be(login_url))
 
-
-class TestRegistrationInvalisPassword:
     # Проверка появления ошибки при регистрации нового пользователя с валидными логином(email в формате логин@домен) и паролем, длина которого менее 6 символов
     def test_registration_invalid_password_error(self, chrome_driver, user_data):
 

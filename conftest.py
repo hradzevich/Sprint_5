@@ -33,4 +33,4 @@ def user_data():
 @pytest.fixture
 def registered_user():
     user = RegisteredUser()
-    return user.get_user()
+    return user.get_registered_user()
