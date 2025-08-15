@@ -1,13 +1,35 @@
 # Здесь собраны все используемые в проекте локаторы
-registration_form = ".//form[@class='Auth_form__3qKeq mb-20']"
-registration_form_name = ".//label[text()='Имя']/following-sibling::input[@name='name']"  # Поле "Имя" на форме регистрации
-registration_form_email = ".//label[text()='Email']/following-sibling::input[@name='name']"  # Поле "Email" на форме регистрации
-registration_form_password = (
-    ".//input[@name='Пароль']"  # Поле "Пароль" на форме регистрации
-)
-registration_btn = ".//button[text()='Зарегистрироваться']"  # Кнопка "Зарегистрироваться" на форме регистрации
-login_form = ".//form[@class='Auth_form__3qKeq mb-20']"  # Форма для логина
-login_form_email = ".//label[text()='Email']/following-sibling::input[@name='name']"  # Поле "Email" на форме логина
-login_form_password = ".//input[@name='Пароль']"  # Поле "Пароль" на форме логина
-login_btn = ".//button[text()='Войти']"  # Кнопка "Войти" на форме логина
-place_order_btn = ".//button[text()='Оформить заказ']"  # Кнопка "Оформить заказ" на главной странице авторизованного пользователя
+from selenium.webdriver.common.by import By
+
+
+class Locators:
+
+    # Поле "Имя" на форме регистрации
+    field_name = (
+        By.XPATH,
+        ".//label[text()='Имя']/following-sibling::input[@name='name']",
+    )
+
+    # Поле "Email" на форме регистрации/логина
+    field_email = (
+        By.XPATH,
+        ".//label[text()='Email']/following-sibling::input[@name='name']",
+    )
+
+    # Поле "Пароль" на форме регистрации/логина
+    field_password = (By.XPATH, ".//input[@name='Пароль']")
+    
+    # Кнопка "Зарегистрироваться" на форме регистрации
+    registration_btn = (By.XPATH, ".//button[text()='Зарегистрироваться']")  
+    
+    # Кнопка "Войти" на форме логина
+    login_btn = (
+        By.XPATH,
+        ".//form[@class='Auth_form__3qKeq mb-20']//button[text()='Войти']",
+    )
+
+    # Кнопка "Оформить заказ" на главной странице авторизованного пользователя
+    place_order_btn = (
+        By.XPATH,
+        ".//*[@id='root']/div/main/section[2]/div/button[text()='Оформить заказ']",
+    )

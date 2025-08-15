@@ -1,13 +1,14 @@
 import pytest
 from selenium import webdriver
-import random as r
-from faker import Faker
+from generation_user_data import UserDataGenerator
+from registered_user_data import RegisteredUser
 
 
 # Фикстура для запуска Chrome
 @pytest.fixture
 def chrome_driver():
     driver = webdriver.Chrome()
+    driver.maximize_window()
     yield driver
     driver.quit()
 
@@ -16,6 +17,7 @@ def chrome_driver():
 @pytest.fixture
 def firefox_driver():
     driver = webdriver.Firefox()
+    driver.maximize_window()
     yield driver
     driver.quit()
 
@@ -23,27 +25,12 @@ def firefox_driver():
 # Фикстура для генерации данных(имя, логин, пароль) для регистрации
 @pytest.fixture
 def user_data():
-    # Объявляем переменную, представляющую собой список доменов
-    domains = ["yandex.ru", "gmail.com", "yahoo.com", "mail.ru"]
-    # Объявляем переменную, предсталяющую собой строку из символов для генерации пароля
-    numbers_plus_letters = "1234567890abcdefghijklmnopqrstuvwxyz"
-    # Генеририуем логин по заданному формату имя_фамилия_номер когорты_любые3цифры@домен
-    login = "hanna_radzevich_28_" + str(r.randint(100, 999)) + "@" + r.choice(domains)
-    # Генерируем пароль длиной 9 символов
-    password = "".join(r.sample(numbers_plus_letters, 9))
-    # Создаём объект Faker с русской локалью
-    fake = Faker("ru_RU")
-    # Генерируем полное имя (Имя + Фамилия)
-    name = f"{fake.first_name()} {fake.last_name()}"
-    data = {"login": login, "password": password, "name": name}
-    return data
+    generator = UserDataGenerator()
+    return generator.generate_user_data()
 
 
 # Фикстура для создания логина и пароля для логина уже зарегистрированного пользователя
 @pytest.fixture
-def credentials():
-    credentials = {
-        "login": "hanna_radzevich_28_123@yandex.com",
-        "password": "password123",
-    }
-    return credentials
+def registered_user():
+    user = RegisteredUser()
+    return user.get_user()
