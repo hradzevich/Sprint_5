@@ -59,13 +59,39 @@ class Locators:
         By.XPATH,
         ".//p[text()='Вспомнили пароль?']/a[@href and text()='Войти']",
     )
-    
-    # Название раздела "Личный Кабинет" на странице "Личный Кабинет"
-    account_page_title = (By.XPATH, ".//a[@aria-current='page']/p[text()='Личный Кабинет']")
+
+    # Название активного раздела "Личный Кабинет" на странице "Личный Кабинет"
+    account_page_title = (
+        By.XPATH,
+        ".//p[text()='Личный Кабинет']/parent::a[@aria-current='page' and contains(@class, 'link_active')]",
+    )
 
     # Поле "Логин" на на странице "Личный Кабинет"
-    account_field_email = (
+    account_page_field_email = (
         By.XPATH,
         ".//ul/li//label[text()='Логин']/following-sibling::input[@disabled]",
     )
 
+    # Раздел "Конструктор" на странице личного кабинета
+    account_page_constructor_section = (
+        By.XPATH,
+        ".//ul/li//p[text()='Конструктор']/parent::a",
+    )
+
+    # Название активного раздела "Конструктор" на главной странице
+    constructor_section_main_page = (
+        By.XPATH,
+        ".//p[text()='Конструктор']/parent::a[@aria-current='page' and contains(@class, 'link_active')]",
+    )
+
+    # Логотип Stellar Burgers на странице личного кабинета
+    account_page_logo = (
+        By.XPATH,
+        ".//div[@class='AppHeader_header__logo__2D0X2']/a[@href]",
+    )
+    
+    # # Логотип Stellar Burgers на главной странице
+    # main_page_logo = (
+    #     By.XPATH,
+    #     ".//div[@class='AppHeader_header__logo__2D0X2']/a[@href and @aria-current='page']",
+    # )
