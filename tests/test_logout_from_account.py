@@ -19,8 +19,10 @@ class TestLogoutFromAccount:
         # Кликнем на кнопку "Выход" на странице личного кабинета
         user_logged_driver.find_element(*loc.logout_btn_account_page).click()
 
-        # Ждём, что URL изменился на страницу логина
-        WebDriverWait(user_logged_driver, 10).until(EC.url_to_be(login_url))
+        # Добавляем явное ожидание, что кнопка "Восстановить пароль" загрузилась на странице логина
+        WebDriverWait(user_logged_driver, 10).until(
+            EC.visibility_of_element_located((loc.reset_password_btn))
+        )
 
         # Найдем элемент названия формы логина
         login_form_header = user_logged_driver.find_element(*loc.login_form_header)

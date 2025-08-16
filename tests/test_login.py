@@ -35,14 +35,18 @@ class TestLoginViaLoginButton:
         # Кликнем на кнопку "Войти"
         chrome_driver.find_element(*loc.login_btn).click()
 
-        # Добавим явное ожидание, что кнопка "Оформить заказ", доступная только авторизованным пользователям, 
-        # загрузилась на странице
+        # Добавим явное ожидание, что отображается элемент логотипа, имеющий атрибут aria-current='page'
         WebDriverWait(chrome_driver, 10).until(
-            EC.visibility_of_element_located((loc.place_order_btn))
+            EC.presence_of_element_located((loc.main_page_logo))
         )
 
-        # Проверяем, что открылся URL главной страницы
+        # Находим кнопку "Оформить заказ"
+        place_order_button = chrome_driver.find_element(*loc.place_order_btn)
+
+        # Проверяем, что открылся URL главной страницы и кнопка "Оформить заказ", доступная только авторизованным
+        # пользователям, отображается на странице
         assert chrome_driver.current_url == main_url
+        assert place_order_button.is_displayed()
 
 
 class TestLoginViaAccountButton:
@@ -74,14 +78,18 @@ class TestLoginViaAccountButton:
         # Кликнем на кнопку "Войти"
         chrome_driver.find_element(*loc.login_btn).click()
 
-        # Добавим явное ожидание, что кнопка "Оформить заказ", доступная только авторизованным пользователям, 
-        # загрузилась на странице
+        # Добавим явное ожидание, что отображается элемент логотипа, имеющий атрибут aria-current='page'
         WebDriverWait(chrome_driver, 10).until(
-            EC.visibility_of_element_located((loc.place_order_btn))
+            EC.presence_of_element_located((loc.main_page_logo))
         )
 
-        # Проверяем, что открылся URL главной страницы
+        # Находим кнопку "Оформить заказ"
+        place_order_button = chrome_driver.find_element(*loc.place_order_btn)
+
+        # Проверяем, что открылся URL главной страницы и кнопка "Оформить заказ", доступная только авторизованным
+        # пользователям, отображается на странице
         assert chrome_driver.current_url == main_url
+        assert place_order_button.is_displayed()
 
 
 class TestLoginViaRegistration:
@@ -113,14 +121,18 @@ class TestLoginViaRegistration:
         # Кликнем на кнопку "Войти"
         chrome_driver.find_element(*loc.login_btn).click()
 
-        # Добавим явное ожидание, что кнопка "Оформить заказ", доступная только авторизованным пользователям, 
-        # загрузилась на странице
+        # Добавим явное ожидание, что отображается элемент логотипа, имеющий атрибут aria-current='page'
         WebDriverWait(chrome_driver, 10).until(
-            EC.visibility_of_element_located((loc.place_order_btn))
+            EC.presence_of_element_located((loc.main_page_logo))
         )
 
-        # Проверяем, что открылся URL главной страницы
+        # Находим кнопку "Оформить заказ"
+        place_order_button = chrome_driver.find_element(*loc.place_order_btn)
+
+        # Проверяем, что открылся URL главной страницы и кнопка "Оформить заказ", доступная только авторизованным
+        # пользователям, отображается на странице
         assert chrome_driver.current_url == main_url
+        assert place_order_button.is_displayed()
 
 
 class TestLoginViaPasswordReset:
@@ -152,11 +164,15 @@ class TestLoginViaPasswordReset:
         # Кликнем на кнопку "Войти"
         chrome_driver.find_element(*loc.login_btn).click()
 
-        # Добавим явное ожидание, что кнопка "Оформить заказ", доступная только авторизованным пользователям, 
-        # загрузилась на странице
+        # Добавим явное ожидание, что отображается элемент логотипа, имеющий атрибут aria-current='page'
         WebDriverWait(chrome_driver, 10).until(
-            EC.visibility_of_element_located((loc.place_order_btn))
+            EC.presence_of_element_located((loc.main_page_logo))
         )
 
-        # Проверяем, что открылся URL главной страницы
+        # Находим кнопку "Оформить заказ"
+        place_order_button = chrome_driver.find_element(*loc.place_order_btn)
+
+        # Проверяем, что открылся URL главной страницы и кнопка "Оформить заказ", доступная только авторизованным
+        # пользователям, отображается на странице
         assert chrome_driver.current_url == main_url
+        assert place_order_button.is_displayed()

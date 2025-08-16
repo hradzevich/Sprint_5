@@ -36,7 +36,7 @@ class TestRedirectToConstructorByClick:
 
 class TestRedirectToConstructorByLogoClick:
     #  Проверка перехода из личного кабинета в конструктор по клику на логотип Stellar Burgers
-    def test_redirect_to_constructor_by__logo_click(self, user_logged_driver):
+    def test_redirect_to_constructor_by_logo_click(self, user_logged_driver):
 
         # Кликнем на «Личный кабинет» на главной странице
         user_logged_driver.find_element(*loc.account_btn_main).click()
@@ -46,8 +46,8 @@ class TestRedirectToConstructorByLogoClick:
             EC.visibility_of_element_located((loc.account_page_title))
         )
 
-        # Кликнем на логотип Stellar Burgers на стринице личного кабинета
-        user_logged_driver.find_element(*loc.account_page_logo).click()
+        # Кликнем на логотип Stellar Burgers на странице личного кабинета
+        user_logged_driver.find_element(*loc.another_page_logo).click()
 
         # Добавим явное ожидание, что кнопка "Оформить заказ" загрузилась на главной странице
         WebDriverWait(user_logged_driver, 10).until(

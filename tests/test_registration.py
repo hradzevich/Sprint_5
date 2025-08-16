@@ -31,15 +31,17 @@ class TestRegistrationSuccess:
         # Кликнем на кнопку "Зарегистрироваться"
         chrome_driver.find_element(*loc.registration_btn).click()
 
-        # Ждём, что URL изменился на страницу логина
-        WebDriverWait(chrome_driver, 10).until(EC.url_to_be(login_url))
+        # Добавляем явное ожидание, что кнопка "Восстановить пароль" загрузилась на странице логина
+        WebDriverWait(chrome_driver, 10).until(
+            EC.visibility_of_element_located((loc.reset_password_btn))
+        )
 
         # Найдем элемент названия формы логина
-        login_form_header = chrome_driver.find_element(*loc.login_form_header)
+        header_login_form = chrome_driver.find_element(*loc.login_form_header)
 
         # Проверяем, что URL текущей страницы соответствует login_url и название формы для логина "Вход" есть на странице
         assert chrome_driver.current_url == login_url
-        assert login_form_header.text == "Вход"
+        assert header_login_form.text == "Вход"
 
 
 class TestRegistrationInvalidPasswordError:
@@ -66,16 +68,12 @@ class TestRegistrationInvalidPasswordError:
         # Кликнем на кнопку "Зарегистрироваться", чтобы снять фокус с поля "Пароль"
         chrome_driver.find_element(*loc.registration_btn).click()
 
-        # Добавим явное ожидание, что ошибка некорректного пароля отображается
-        WebDriverWait(chrome_driver, 10).until(
-            EC.visibility_of_element_located((loc.password_error_message))
-        )
-
         # Находим элемент с сообщением об ошибке при некорректном пароле
         incorrect_password_error = chrome_driver.find_element(
             *loc.password_error_message
         )
 
-        # Проверяем, что элемент ошибки присутсвует на странице и URL текущей страницы соответствует register_url(не изменился)
+        # Проверяем, что элемент ошибки присутсвует на странице и
+        # URL текущей страницы соответствует register_url(не изменился)
         assert chrome_driver.current_url == register_url
         assert "Некорректный пароль" in incorrect_password_error.text

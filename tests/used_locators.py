@@ -84,17 +84,17 @@ class Locators:
         ".//p[text()='Конструктор']/parent::a[@aria-current='page' and contains(@class, 'link_active')]",
     )
 
-    # Логотип Stellar Burgers на странице личного кабинета
-    account_page_logo = (
+    # Логотип Stellar Burgers на других страницах
+    another_page_logo = (
         By.XPATH,
         ".//div[@class='AppHeader_header__logo__2D0X2']/a[@href]",
     )
 
-    # # Логотип Stellar Burgers на главной странице
-    # main_page_logo = (
-    #     By.XPATH,
-    #     ".//div[@class='AppHeader_header__logo__2D0X2']/a[@href and @aria-current='page']",
-    # )
+    # Логотип Stellar Burgers на главной странице
+    main_page_logo = (
+        By.XPATH,
+        ".//div[@class='AppHeader_header__logo__2D0X2']/a[@href and @aria-current='page']",
+    )
 
     # Кпопка "Выход" на странице личного кабинета
     logout_btn_account_page = (By.XPATH, ".//ul/li/button[text()='Выход']")
@@ -104,3 +104,6 @@ class Locators:
 
     # Название формы для регистрации "Регистрация" на странице регистрации
     registration_form_header = (By.XPATH, ".//div/h2[text()='Регистрация']")
+
+    # Кнопка "Восстановить пароль" на странице входа
+    reset_password_btn = (By.XPATH, ".//a[@href and text()='Восстановить пароль']")
