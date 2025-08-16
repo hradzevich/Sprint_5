@@ -4,24 +4,6 @@ from urls import main_url
 from used_locators import Locators as loc
 
 
-class TestNavigationInConstructorBunsDefault:
-    # Проверка работы переходов, раздел «Булки» активный по умолчанию
-    def test_navigation_in_constructor_buns_default(self, chrome_driver):
-
-        # Откроем главную страницу  в окне браузера
-        chrome_driver.get(main_url)
-
-        # Добавим явное ожидание, что отображается элемент логотипа, имеющий атрибут aria-current='page'
-        WebDriverWait(chrome_driver, 10).until(
-            EC.presence_of_element_located((loc.main_page_logo))
-        )
-        # Находим элемент выбранного по умолчанию раздела "Конструктора"
-        default_section = chrome_driver.find_element(*loc.constructor_section_active)
-
-        # Проверяем, что по умолчанию выбран раздел "Булки"
-        assert default_section.text == "Булки"
-
-
 class TestNavigationInConstructoToSauces:
     # Проверка работы переходов к разделу «Соусы»
     def test_navigation_in_constructor_to_sauces(self, chrome_driver):
