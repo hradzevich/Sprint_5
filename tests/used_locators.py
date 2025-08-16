@@ -89,9 +89,18 @@ class Locators:
         By.XPATH,
         ".//div[@class='AppHeader_header__logo__2D0X2']/a[@href]",
     )
-    
+
     # # Логотип Stellar Burgers на главной странице
     # main_page_logo = (
     #     By.XPATH,
     #     ".//div[@class='AppHeader_header__logo__2D0X2']/a[@href and @aria-current='page']",
     # )
+
+    # Кпопка "Выход" на странице личного кабинета
+    logout_btn_account_page = (By.XPATH, ".//ul/li/button[text()='Выход']")
+
+    # Название формы для входа "Вход" на странице логина
+    login_form_header = (By.XPATH, ".//div/h2[text()='Вход']")
+
+    # Название формы для регистрации "Регистрация" на странице регистрации
+    registration_form_header = (By.XPATH, ".//div/h2[text()='Регистрация']")

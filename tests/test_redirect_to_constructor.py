@@ -29,7 +29,7 @@ class TestRedirectToConstructorByClick:
             *loc.constructor_section_main_page
         )
 
-        # Проверка, что URL текущей страницы совпадает с main_url и раздел «Конструктор» на главной странице активный
+        # Проверяем, что URL текущей страницы совпадает с main_url и раздел «Конструктор» на главной странице активный
         assert user_logged_driver.current_url == main_url
         assert constructor_section_active.get_attribute("aria-current") == "page"
 
@@ -59,6 +59,6 @@ class TestRedirectToConstructorByLogoClick:
             *loc.constructor_section_main_page
         )
 
-        # Проверка, что URL текущей страницы совпадает с main_url и раздел «Конструктор» на главной странице активный
+        # Проверяем, что URL текущей страницы совпадает с main_url и раздел «Конструктор» на главной странице активный
         assert user_logged_driver.current_url == main_url
         assert constructor_section_active.get_attribute("aria-current") == "page"

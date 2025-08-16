@@ -6,7 +6,7 @@ import random as r
 
 
 class TestRegistrationSuccess:
-    # Проверка регистрации нового пользователя с валидными логином(email в формате логин@домен) 
+    # Проверка регистрации нового пользователя с валидными логином(email в формате логин@домен)
     # и паролем(длина более 6 символов)
     def test_registration_valid_credentials_success(self, chrome_driver, user_data):
 
@@ -31,12 +31,19 @@ class TestRegistrationSuccess:
         # Кликнем на кнопку "Зарегистрироваться"
         chrome_driver.find_element(*loc.registration_btn).click()
 
-        # Ждём и проверяем, что URL изменился на страницу логина
-        assert WebDriverWait(chrome_driver, 10).until(EC.url_to_be(login_url))
+        # Ждём, что URL изменился на страницу логина
+        WebDriverWait(chrome_driver, 10).until(EC.url_to_be(login_url))
+
+        # Найдем элемент названия формы логина
+        login_form_header = chrome_driver.find_element(*loc.login_form_header)
+
+        # Проверяем, что URL текущей страницы соответствует login_url и название формы для логина "Вход" есть на странице
+        assert chrome_driver.current_url == login_url
+        assert login_form_header.text == "Вход"
 
 
 class TestRegistrationInvalidPasswordError:
-    # Проверка появления ошибки при регистрации нового пользователя с валидными логином(email в формате логин@домен) 
+    # Проверка появления ошибки при регистрации нового пользователя с валидными логином(email в формате логин@домен)
     # и паролем, длина которого менее 6 символов
     def test_registration_invalid_password_error(self, chrome_driver, user_data):
 
@@ -69,6 +76,6 @@ class TestRegistrationInvalidPasswordError:
             *loc.password_error_message
         )
 
-        # Проверка, что элемент ошибки присутсвует на странице и текст ошибки соотносится с ее причиной
-        assert incorrect_password_error.is_displayed()
+        # Проверяем, что элемент ошибки присутсвует на странице и URL текущей страницы соответствует register_url(не изменился)
+        assert chrome_driver.current_url == register_url
         assert "Некорректный пароль" in incorrect_password_error.text

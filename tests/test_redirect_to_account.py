@@ -26,6 +26,6 @@ class TestRedirectToAccount:
         # Находим элемент содержащий данные о логине пользователя
         email_field_account = user_logged_driver.find_element(*loc.account_page_field_email)
 
-        # Проверка, что URL текущей страницы совпадает с account_url и данные в поле "Логин" залогированного пользователя
+        # Проверяем, что URL текущей страницы совпадает с account_url и данные в поле "Логин" залогированного пользователя
         assert email_field_account.get_attribute("value") == registered_user["email"]
         assert user_logged_driver.current_url == account_url
