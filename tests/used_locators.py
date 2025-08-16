@@ -107,3 +107,18 @@ class Locators:
 
     # Кнопка "Восстановить пароль" на странице входа
     reset_password_btn = (By.XPATH, ".//a[@href and text()='Восстановить пароль']")
+
+    # Выбранный подраздел в разделе "Конструктор"
+    constructor_section_active = (
+        By.XPATH,
+        "//section[h1[text()='Соберите бургер']]//div[contains(@class,'tab_tab_type_current')]",
+    )
+
+    # Подраздел "Булки" в разделе "Конструктор"
+    constructor_section_buns = (By.XPATH, ".//section[h1[text()='Соберите бургер']]//div[span[text()='Булки']]")
+
+    # Подраздел "Соусы" в разделе "Конструктор"
+    constructor_section_sauces = (By.XPATH, ".//section[h1[text()='Соберите бургер']]//div[span[text()='Соусы']]")
+
+    # Подраздел "Начинки" в разделе "Конструктор"
+    constructor_section_fillings = (By.XPATH, "//section[h1[text()='Соберите бургер']]//div[span[text()='Начинки']]")
