@@ -1,3 +1,5 @@
+# Данный файл содержит класс UserDataGenerator, который используется для генерации
+# тестовых данных (имя, email и пароль) для автотестов сервиса Stellar Burgers
 import random as r
 from faker import Faker
 
@@ -20,7 +22,7 @@ class UserDataGenerator:
 
             # Генеририуем логин по заданному формату имя_фамилия_номер когорты_любые3цифры@домен
             self.email = (
-                "h_radzevich_28_" + str(r.randint(100, 999)) + r.choice(domains)
+                "hanna_radzevich_28_" + str(r.randint(100, 999)) + r.choice(domains)
             )
 
             # Объявляем переменную, предсталяющую собой строку из символов для генерации пароля

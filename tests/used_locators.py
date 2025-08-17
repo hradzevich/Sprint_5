@@ -1,4 +1,4 @@
-# Здесь собраны все используемые в проекте локаторы
+# Здесь собраны все используемые в автотестах сервиса Stellar Burgers локаторы
 from selenium.webdriver.common.by import By
 
 

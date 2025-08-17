@@ -1,4 +1,4 @@
-# Здесь собраны используемые в проекте ссылки
+# Здесь собраны используемые в автотестах сервиса Stellar Burgers ссылки
 
 # Главная страница
 main_url = "https://stellarburgers.nomoreparties.site/"

@@ -1,3 +1,6 @@
+# Файл используется для хранения фикстур Pytest,
+# которые применяются в автотестах сервиса Stellar Burgers
+
 import pytest
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
