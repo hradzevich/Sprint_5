@@ -19,7 +19,7 @@ class TestNavigationInConstructoToSauces:
         # Кликнем на подраздел "Соусы"
         chrome_driver.find_element(*loc.constructor_section_sauces).click()
 
-        # Находим элемент выбранного по подраздела "Соусы" в разделе "Конструктора"
+        # Находим элемент выбранного подраздела в разделе "Конструктора"
         selected_section = chrome_driver.find_element(*loc.constructor_section_active)
 
         # Проверяем, что выбран подраздел "Соусы"
@@ -41,7 +41,7 @@ class TestNavigationInConstructorToFillings:
         # Кликнем на подраздел "Начинки"
         chrome_driver.find_element(*loc.constructor_section_fillings).click()
 
-        # Находим элемент выбранного по подраздела "Начинки" в разделе "Конструктора"
+        # Находим элемент выбранного подраздела в разделе "Конструктора"
         selected_section = chrome_driver.find_element(*loc.constructor_section_active)
 
         # Проверяем, что выбран подраздел "Начинки"
@@ -66,7 +66,7 @@ class TestNavigationInConstructorToBuns:
         # Кликнем на подраздел "Булки"
         chrome_driver.find_element(*loc.constructor_section_buns).click()
 
-        # Находим элемент выбранного по подраздела "Булки" в разделе "Конструктора"
+        # Находим элемент выбранного подраздела в разделе "Конструктора"
         selected_section = chrome_driver.find_element(*loc.constructor_section_active)
 
         # Проверяем, что выбран подраздел "Булки"

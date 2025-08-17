@@ -16,17 +16,11 @@ class TestRegistrationSuccess:
         # Введем в поле "Имя" значение имени пользователя
         chrome_driver.find_element(*loc.field_name).send_keys(user_data["name"])
 
-        # Сохраним в переменную email значение email пользователя, которое далее используем для входа
-        email = user_data["email"]
-
         # Введем в поле "Еmail" значение email пользователя
-        chrome_driver.find_element(*loc.field_email).send_keys(email)
-
-        # Сохраним в переменную password значение пароля пользователя, которое далее используем для входа
-        password = user_data["password"]
+        chrome_driver.find_element(*loc.field_email).send_keys(user_data["email"])
 
         # Введем в поле "Пароль" значение пароля пользователя
-        chrome_driver.find_element(*loc.field_password).send_keys(password)
+        chrome_driver.find_element(*loc.field_password).send_keys(user_data["password"])
 
         # Кликнем на кнопку "Зарегистрироваться"
         chrome_driver.find_element(*loc.registration_btn).click()

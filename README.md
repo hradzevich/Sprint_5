@@ -52,14 +52,18 @@
 
 + Faker (для генерации тестовых данных)
 
++ WebDriverWait + Expected Conditions
+
++ Random (для генерации тестовых данных)
+
 
 ## <span style= "color: cornflowerblue">Запуск тестов</span>
 
 1. Клонировать репозиторий:<br/>
-     ```shell git clone https://github.com/hradzevich/Sprint_5.git  ```
+     ```git clone https://github.com/hradzevich/Sprint_5.git  ```
 
 2. Установить зависимости:<br/>
-     ```shell pip install -r requirements.txt```
+     ```pip install -r requirements.txt```
 
 3. Запустить тесты:<br/>
-     ```shell pytest -v```
+     ```pytest -v```
