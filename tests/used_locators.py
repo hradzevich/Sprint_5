@@ -60,10 +60,22 @@ class Locators:
         ".//p[text()='Вспомнили пароль?']/a[@href and text()='Войти']",
     )
 
-    # Название активного раздела "Личный Кабинет" на странице "Личный Кабинет"
-    account_page_title = (
+    #  Название выбранного раздела в шапке
+    active_header_section_title = (
         By.XPATH,
-        ".//p[text()='Личный Кабинет']/parent::a[@aria-current='page' and contains(@class, 'link_active')]",
+        ".//a[@aria-current='page' and contains(@class, 'AppHeader_header') and contains(@class, 'link_active')]//p",
+    )
+
+    # Раздел "Личный Кабинет"
+    account_header_section = (
+        By.XPATH,
+        ".//p[text()='Личный Кабинет']/parent::a[contains(@class, 'AppHeader_header')]",
+    )
+
+    # Раздел "Конструктор"
+    constructor_header_section = (
+        By.XPATH,
+        ".//p[text()='Конструктор']/parent::a[contains(@class, 'AppHeader_header')]",
     )
 
     # Поле "Логин" на на странице "Личный Кабинет"
@@ -72,19 +84,7 @@ class Locators:
         ".//ul/li//label[text()='Логин']/following-sibling::input[@disabled]",
     )
 
-    # Раздел "Конструктор" на странице личного кабинета
-    account_page_constructor_section = (
-        By.XPATH,
-        ".//ul/li//p[text()='Конструктор']/parent::a",
-    )
-
-    # Название активного раздела "Конструктор" на главной странице
-    constructor_section_main_page = (
-        By.XPATH,
-        ".//p[text()='Конструктор']/parent::a[@aria-current='page' and contains(@class, 'link_active')]",
-    )
-
-    # Логотип Stellar Burgers на других страницах
+    # Логотип Stellar Burgers на других страницах, кроме главной
     another_page_logo = (
         By.XPATH,
         ".//div[@class='AppHeader_header__logo__2D0X2']/a[@href]",
@@ -115,10 +115,19 @@ class Locators:
     )
 
     # Подраздел "Булки" в разделе "Конструктор"
-    constructor_section_buns = (By.XPATH, ".//section[h1[text()='Соберите бургер']]//div[span[text()='Булки']]")
+    constructor_section_buns = (
+        By.XPATH,
+        ".//section[h1[text()='Соберите бургер']]//div[span[text()='Булки']]",
+    )
 
     # Подраздел "Соусы" в разделе "Конструктор"
-    constructor_section_sauces = (By.XPATH, ".//section[h1[text()='Соберите бургер']]//div[span[text()='Соусы']]")
+    constructor_section_sauces = (
+        By.XPATH,
+        ".//section[h1[text()='Соберите бургер']]//div[span[text()='Соусы']]",
+    )
 
     # Подраздел "Начинки" в разделе "Конструктор"
-    constructor_section_fillings = (By.XPATH, "//section[h1[text()='Соберите бургер']]//div[span[text()='Начинки']]")
+    constructor_section_fillings = (
+        By.XPATH,
+        "//section[h1[text()='Соберите бургер']]//div[span[text()='Начинки']]",
+    )

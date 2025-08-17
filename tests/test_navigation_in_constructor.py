@@ -11,9 +11,11 @@ class TestNavigationInConstructoToSauces:
         # Откроем главную страницу  в окне браузера
         chrome_driver.get(main_url)
 
-        # Добавим явное ожидание, что отображается элемент логотипа, имеющий атрибут aria-current='page'
+        # Добавим явное ожидание, что выбран раздел "Конструктор"(атрибут aria-current="page")
         WebDriverWait(chrome_driver, 10).until(
-            EC.presence_of_element_located((loc.main_page_logo))
+            EC.text_to_be_present_in_element_attribute(
+                loc.constructor_header_section, "aria-current", "page"
+            )
         )
 
         # Кликнем на подраздел "Соусы"
@@ -33,9 +35,11 @@ class TestNavigationInConstructorToFillings:
         # Откроем главную страницу  в окне браузера
         chrome_driver.get(main_url)
 
-        # Добавим явное ожидание, что отображается элемент логотипа, имеющий атрибут aria-current='page'
+        # Добавим явное ожидание, что выбран раздел "Конструктор"(атрибут aria-current="page")
         WebDriverWait(chrome_driver, 10).until(
-            EC.presence_of_element_located((loc.main_page_logo))
+            EC.text_to_be_present_in_element_attribute(
+                loc.constructor_header_section, "aria-current", "page"
+            )
         )
 
         # Кликнем на подраздел "Начинки"
@@ -55,9 +59,11 @@ class TestNavigationInConstructorToBuns:
         # Откроем главную страницу  в окне браузера
         chrome_driver.get(main_url)
 
-        # Добавим явное ожидание, что отображается элемент логотипа, имеющий атрибут aria-current='page'
+        # Добавим явное ожидание, что выбран раздел "Конструктор"(атрибут aria-current="page")
         WebDriverWait(chrome_driver, 10).until(
-            EC.presence_of_element_located((loc.main_page_logo))
+            EC.text_to_be_present_in_element_attribute(
+                loc.constructor_header_section, "aria-current", "page"
+            )
         )
 
         # Кликнем на подраздел "Начинки", чтобы сменить выбранный подраздел

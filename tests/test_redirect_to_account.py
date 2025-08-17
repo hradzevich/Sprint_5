@@ -14,6 +14,13 @@ class TestRedirectToAccount:
         # Кликнем на «Личный кабинет» на главной странице
         user_logged_driver.find_element(*loc.account_btn_main).click()
 
+        # Добавляем явное ожидание, что раздел "Личный кабинет" выбран (атрибут aria-current="page")
+        WebDriverWait(user_logged_driver, 10).until(
+            EC.text_to_be_present_in_element_attribute(
+                loc.account_header_section, "aria-current", "page"
+            )
+        )
+
         # Добавляем явное ожидание, что форма с данными пользователя (поле "Логин") загрузилась
         WebDriverWait(user_logged_driver, 10).until(
             EC.visibility_of_element_located((loc.account_page_field_email))
