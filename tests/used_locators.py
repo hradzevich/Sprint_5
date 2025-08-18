@@ -5,129 +5,123 @@ from selenium.webdriver.common.by import By
 class Locators:
 
     # Поле "Имя" на форме регистрации
-    field_name = (
+    FIELD_NAME = (
         By.XPATH,
         ".//label[text()='Имя']/following-sibling::input[@name='name']",
     )
 
     # Поле "Email" на форме регистрации/логина
-    field_email = (
+    FIELD_EMAIL = (
         By.XPATH,
         ".//label[text()='Email']/following-sibling::input[@name='name']",
     )
 
     # Поле "Пароль" на форме регистрации/логина
-    field_password = (By.XPATH, ".//input[@name='Пароль']")
+    FIELD_PASSWORD = (By.XPATH, ".//input[@name='Пароль']")
 
     # Кнопка "Зарегистрироваться" на форме регистрации
-    registration_btn = (By.XPATH, ".//button[text()='Зарегистрироваться']")
+    REGISTRATION_BTN = (By.XPATH, ".//button[text()='Зарегистрироваться']")
 
     # Кнопка "Войти" на форме логина
-    login_btn = (
+    LOGIN_BTN = (
         By.XPATH,
         ".//form[@class='Auth_form__3qKeq mb-20']//button[text()='Войти']",
     )
 
     # Кнопка "Оформить заказ" на главной странице авторизованного пользователя
-    place_order_btn = (
+    PLACE_ORDER_BTN = (
         By.XPATH,
         ".//*[@id='root']/div/main/section[2]/div/button[text()='Оформить заказ']",
     )
     # Сообщение о некорректном пароле на странице регистрации
-    password_error_message = (By.XPATH, ".//p[text()='Некорректный пароль']")
+    PASSWORD_ERROR_MESSAGE = (By.XPATH, ".//p[text()='Некорректный пароль']")
 
     # Кнопка «Войти в аккаунт» на главной странице
-    go_to_account_main_btn = (
+    GO_TO_ACCOUNT_MAIN_PAGE_BTN = (
         By.XPATH,
         ".//*[@id='root']/div/main/section[2]/div/button[text()='Войти в аккаунт']",
     )
 
-    # Кнопка «Личный кабинет» на главной странице
-    account_btn_main = (
-        By.XPATH,
-        ".//a[p[text()='Личный Кабинет']]",
-    )
-
     # Кнопка "Войти" на странице регистрации
-    login_btn_registration = (
+    LOGIN_BTN_REGISTRATION = (
         By.XPATH,
         ".//p[text()='Уже зарегистрированы?']/a[@href and text()='Войти']",
     )
 
     # Кнопка "Войти" на странице восстановления пароля
-    login_btn_rest_password = (
+    LOGIN_BTN_RESET_PASSWORD = (
         By.XPATH,
         ".//p[text()='Вспомнили пароль?']/a[@href and text()='Войти']",
     )
 
     #  Название выбранного раздела в шапке
-    active_header_section_title = (
+    ACTIVE_SECTION_HEADER_TITLE = (
         By.XPATH,
         ".//a[@aria-current='page' and contains(@class, 'AppHeader_header') and contains(@class, 'link_active')]//p",
     )
 
     # Раздел "Личный Кабинет"
-    account_header_section = (
+    ACCOUNT_HEADER_SECTION = (
         By.XPATH,
         ".//p[text()='Личный Кабинет']/parent::a[contains(@class, 'AppHeader_header')]",
     )
 
     # Раздел "Конструктор"
-    constructor_header_section = (
+    CONSTRACTOR_HEADER_SECTION = (
         By.XPATH,
         ".//p[text()='Конструктор']/parent::a[contains(@class, 'AppHeader_header')]",
     )
 
     # Поле "Логин" на на странице "Личный Кабинет"
-    account_page_field_email = (
+    ACCOUNT_FIELD_EMAIL = (
         By.XPATH,
         ".//ul/li//label[text()='Логин']/following-sibling::input[@disabled]",
     )
 
     # Логотип Stellar Burgers на других страницах, кроме главной
-    another_page_logo = (
+    NOT_MAIN_PAGE_LOGO = (
         By.XPATH,
         ".//div[@class='AppHeader_header__logo__2D0X2']/a[@href]",
     )
 
     # Логотип Stellar Burgers на главной странице
-    main_page_logo = (
+    MAIN_PAGE_LOGO = (
         By.XPATH,
         ".//div[@class='AppHeader_header__logo__2D0X2']/a[@href and @aria-current='page']",
     )
 
     # Кпопка "Выход" на странице личного кабинета
-    logout_btn_account_page = (By.XPATH, ".//ul/li/button[text()='Выход']")
+    LOGOUT_BTN = (By.XPATH, ".//ul/li/button[text()='Выход']")
 
     # Название формы для входа "Вход" на странице логина
-    login_form_header = (By.XPATH, ".//div/h2[text()='Вход']")
+    LOGIN_FORM_TITLE = (By.XPATH, ".//div/h2[text()='Вход']")
 
     # Название формы для регистрации "Регистрация" на странице регистрации
-    registration_form_header = (By.XPATH, ".//div/h2[text()='Регистрация']")
+    REGISTRATION_FORM_TITLE = (By.XPATH, ".//div/h2[text()='Регистрация']")
 
     # Кнопка "Восстановить пароль" на странице входа
-    reset_password_btn = (By.XPATH, ".//a[@href and text()='Восстановить пароль']")
+    RESET_PASSWORD_BTN = (By.XPATH, ".//a[@href and text()='Восстановить пароль']")
 
     # Выбранный подраздел в разделе "Конструктор"
-    constructor_section_active = (
+    CONSTRUCTOR_ACTIVE_SUBSECTION = (
         By.XPATH,
         "//section[h1[text()='Соберите бургер']]//div[contains(@class,'tab_tab_type_current')]",
     )
 
     # Подраздел "Булки" в разделе "Конструктор"
-    constructor_section_buns = (
+    CONSTRUCTOR_SUBSECTION_BUNS = (
         By.XPATH,
         ".//section[h1[text()='Соберите бургер']]//div[span[text()='Булки']]",
     )
 
     # Подраздел "Соусы" в разделе "Конструктор"
-    constructor_section_sauces = (
+    CONSTRUCTOR_SUBSECTION_SAUCES = (
         By.XPATH,
         ".//section[h1[text()='Соберите бургер']]//div[span[text()='Соусы']]",
     )
 
     # Подраздел "Начинки" в разделе "Конструктор"
-    constructor_section_fillings = (
+    CONSTRUCTOR_SUBSECTION_FILLINGS = (
         By.XPATH,
         "//section[h1[text()='Соберите бургер']]//div[span[text()='Начинки']]",
     )

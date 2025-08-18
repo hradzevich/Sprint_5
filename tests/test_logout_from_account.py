@@ -1,6 +1,6 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from urls import login_url
+from urls import LOGIN_PAGE
 from used_locators import Locators as loc
 
 
@@ -9,24 +9,24 @@ class TestLogoutFromAccount:
     def test_logout_from_account_by_logout_btn_click(self, user_logged_driver):
 
         # Кликнем на «Личный кабинет» на главной странице
-        user_logged_driver.find_element(*loc.account_btn_main).click()
+        user_logged_driver.find_element(*loc.ACCOUNT_HEADER_SECTION).click()
 
         # Добавляем явное ожидание, что кнопкa "Выход" отображается на странице личного кабинета
         WebDriverWait(user_logged_driver, 10).until(
-            EC.visibility_of_element_located((loc.logout_btn_account_page))
+            EC.visibility_of_element_located((loc.LOGOUT_BTN))
         )
 
         # Кликнем на кнопку "Выход" на странице личного кабинета
-        user_logged_driver.find_element(*loc.logout_btn_account_page).click()
+        user_logged_driver.find_element(*loc.LOGOUT_BTN).click()
 
         # Добавляем явное ожидание, что кнопка "Восстановить пароль" загрузилась на странице логина
         WebDriverWait(user_logged_driver, 10).until(
-            EC.visibility_of_element_located((loc.reset_password_btn))
+            EC.visibility_of_element_located((loc.RESET_PASSWORD_BTN))
         )
 
         # Найдем элемент названия формы логина
-        login_form_header = user_logged_driver.find_element(*loc.login_form_header)
+        login_form_title = user_logged_driver.find_element(*loc.LOGIN_FORM_TITLE)
 
-        # Проверяем, что URL текущей страницы соответствует login_url и название формы для логина "Вход" есть на странице
-        assert user_logged_driver.current_url == login_url
-        assert login_form_header.text == "Вход"
+        # Проверяем, что URL текущей страницы соответствует LOGIN_PAGE и название формы для логина "Вход" есть на странице
+        assert user_logged_driver.current_url == LOGIN_PAGE
+        assert login_form_title.text == "Вход"

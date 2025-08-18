@@ -1,16 +1,16 @@
 # Здесь собраны используемые в автотестах сервиса Stellar Burgers ссылки
 
 # Главная страница
-main_url = "https://stellarburgers.nomoreparties.site/"
+MAIN_PAGE= "https://stellarburgers.nomoreparties.site/"
 
 # Страница регистрации
-register_url = f"{main_url}register"
+REGISTRATION_PAGE = f"{MAIN_PAGE}register"
 
 # Страница для логина
-login_url = f"{main_url}login"
+LOGIN_PAGE = f"{MAIN_PAGE}login"
 
 # Страница восстановления пароля
-reset_password_url = f"{main_url}forgot-password"
+RESET_PASSWORD_PAGE= f"{MAIN_PAGE}forgot-password"
 
 # Страница профиля пользователя
-account_url = f"{main_url}account/profile"
+ACCOUNT_PAGE = f"{MAIN_PAGE}account/profile"
