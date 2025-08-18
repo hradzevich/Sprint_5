@@ -26,13 +26,10 @@ class TestLoginViaLoginButton:
             RegisteredUser.password
         )
 
-        # Добавим явное ожидание, что кнопка "Войти" кликабельна
+        # Добавим явное ожидание, что кнопка "Войти" кликабельна, и кликнем
         WebDriverWait(chrome_driver, 5).until(
             EC.element_to_be_clickable((*loc.LOGIN_BTN,))
-        )
-
-        # Кликнем на кнопку "Войти"
-        chrome_driver.find_element(*loc.LOGIN_BTN).click()
+        ).click()
 
         # Добавим явное ожидание, что отображается элемент логотипа, имеющий атрибут aria-current='page'
         WebDriverWait(chrome_driver, 10).until(
@@ -69,13 +66,10 @@ class TestLoginViaAccountButton:
             RegisteredUser.password
         )
 
-        # Добавим явное ожидание, что кнопка "Войти" кликабельна
+        # Добавим явное ожидание, что кнопка "Войти" кликабельна, и кликнем
         WebDriverWait(chrome_driver, 5).until(
             EC.element_to_be_clickable((*loc.LOGIN_BTN,))
-        )
-
-        # Кликнем на кнопку "Войти"
-        chrome_driver.find_element(*loc.LOGIN_BTN).click()
+        ).click()
 
         # Добавим явное ожидание, что отображается элемент логотипа, имеющий атрибут aria-current='page'
         WebDriverWait(chrome_driver, 10).until(
@@ -112,13 +106,10 @@ class TestLoginViaRegistration:
             RegisteredUser.password
         )
 
-        # Добавим явное ожидание, что кнопка "Войти" кликабельна
+        # Добавим явное ожидание, что кнопка "Войти" кликабельна, и кликнем
         WebDriverWait(chrome_driver, 5).until(
             EC.element_to_be_clickable((*loc.LOGIN_BTN,))
-        )
-
-        # Кликнем на кнопку "Войти"
-        chrome_driver.find_element(*loc.LOGIN_BTN).click()
+        ).click()
 
         # Добавим явное ожидание, что отображается элемент логотипа, имеющий атрибут aria-current='page'
         WebDriverWait(chrome_driver, 10).until(
@@ -155,13 +146,10 @@ class TestLoginViaPasswordReset:
             RegisteredUser.password
         )
 
-        # Добавим явное ожидание, что кнопка "Войти" кликабельна
+        # Добавим явное ожидание, что кнопка "Войти" кликабельна, и кликнем
         WebDriverWait(chrome_driver, 5).until(
             EC.element_to_be_clickable((*loc.LOGIN_BTN,))
-        )
-
-        # Кликнем на кнопку "Войти"
-        chrome_driver.find_element(*loc.LOGIN_BTN).click()
+        ).click()
 
         # Добавим явное ожидание, что отображается элемент логотипа, имеющий атрибут aria-current='page'
         WebDriverWait(chrome_driver, 10).until(

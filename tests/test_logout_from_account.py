@@ -11,13 +11,10 @@ class TestLogoutFromAccount:
         # Кликнем на «Личный кабинет» на главной странице
         user_logged_driver.find_element(*loc.ACCOUNT_HEADER_SECTION).click()
 
-        # Добавляем явное ожидание, что кнопкa "Выход" отображается на странице личного кабинета
+        # Добавляем явное ожидание, что кнопкa "Выход" отображается на странице личного кабинета, и кликнем
         WebDriverWait(user_logged_driver, 10).until(
             EC.visibility_of_element_located((loc.LOGOUT_BTN))
-        )
-
-        # Кликнем на кнопку "Выход" на странице личного кабинета
-        user_logged_driver.find_element(*loc.LOGOUT_BTN).click()
+        ).click()
 
         # Добавляем явное ожидание, что кнопка "Восстановить пароль" загрузилась на странице логина
         WebDriverWait(user_logged_driver, 10).until(
