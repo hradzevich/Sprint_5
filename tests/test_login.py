@@ -1,14 +1,13 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from urls import MAIN_PAGE, LOGIN_PAGE, REGISTRATION_PAGE, RESET_PASSWORD_PAGE
+from urls import *
 from used_locators import Locators as loc
+from registered_user_data import RegisteredUser
 
 
 class TestLoginViaLoginButton:
     # Проверка входа с главной страницы по кнопке «Войти в аккаунт»
-    def test_login_from_main_page_via_login_button(
-        self, chrome_driver, registered_user
-    ):
+    def test_login_from_main_page_via_login_button(self, chrome_driver):
 
         # Откроем главную страницу в окне браузера
         chrome_driver.get(MAIN_PAGE)
@@ -20,11 +19,11 @@ class TestLoginViaLoginButton:
         WebDriverWait(chrome_driver, 10).until(EC.url_to_be(LOGIN_PAGE))
 
         # Введем в поле "Еmail" значение email пользователя
-        chrome_driver.find_element(*loc.FIELD_EMAIL).send_keys(registered_user["email"])
+        chrome_driver.find_element(*loc.FIELD_EMAIL).send_keys(RegisteredUser.email)
 
         # Введем в поле "Пароль" значение пароля пользователя
         chrome_driver.find_element(*loc.FIELD_PASSWORD).send_keys(
-            registered_user["password"]
+            RegisteredUser.password
         )
 
         # Добавим явное ожидание, что кнопка "Войти" кликабельна
@@ -51,7 +50,7 @@ class TestLoginViaLoginButton:
 
 class TestLoginViaAccountButton:
     # Проверка входа с главной страницы через кнопку «Личный кабинет»
-    def test_login_from_main_via_account_button(self, chrome_driver, registered_user):
+    def test_login_from_main_via_account_button(self, chrome_driver):
 
         # Откроем главную страницу в окне браузера
         chrome_driver.get(MAIN_PAGE)
@@ -63,11 +62,11 @@ class TestLoginViaAccountButton:
         WebDriverWait(chrome_driver, 10).until(EC.url_to_be(LOGIN_PAGE))
 
         # Введем в поле "Еmail" значение email пользователя
-        chrome_driver.find_element(*loc.FIELD_EMAIL).send_keys(registered_user["email"])
+        chrome_driver.find_element(*loc.FIELD_EMAIL).send_keys(RegisteredUser.email)
 
         # Введем в поле "Пароль" значение пароля пользователя
         chrome_driver.find_element(*loc.FIELD_PASSWORD).send_keys(
-            registered_user["password"]
+            RegisteredUser.password
         )
 
         # Добавим явное ожидание, что кнопка "Войти" кликабельна
@@ -94,7 +93,7 @@ class TestLoginViaAccountButton:
 
 class TestLoginViaRegistration:
     # Проверка входа через кнопку "Войти" в форме регистрации
-    def test_login_from_registration(self, chrome_driver, registered_user):
+    def test_login_from_registration(self, chrome_driver):
 
         # Откроем страницу регистрации в окне браузера
         chrome_driver.get(REGISTRATION_PAGE)
@@ -106,11 +105,11 @@ class TestLoginViaRegistration:
         WebDriverWait(chrome_driver, 10).until(EC.url_to_be(LOGIN_PAGE))
 
         # Введем в поле "Еmail" значение email пользователя
-        chrome_driver.find_element(*loc.FIELD_EMAIL).send_keys(registered_user["email"])
+        chrome_driver.find_element(*loc.FIELD_EMAIL).send_keys(RegisteredUser.email)
 
         # Введем в поле "Пароль" значение пароля пользователя
         chrome_driver.find_element(*loc.FIELD_PASSWORD).send_keys(
-            registered_user["password"]
+            RegisteredUser.password
         )
 
         # Добавим явное ожидание, что кнопка "Войти" кликабельна
@@ -137,7 +136,7 @@ class TestLoginViaRegistration:
 
 class TestLoginViaPasswordReset:
     # Проверка входа через кнопку в форме восстановления пароля
-    def test_login_via_password_reset(self, chrome_driver, registered_user):
+    def test_login_via_password_reset(self, chrome_driver):
 
         # Откроем страницу восстановления пароля в окне браузера
         chrome_driver.get(RESET_PASSWORD_PAGE)
@@ -149,11 +148,11 @@ class TestLoginViaPasswordReset:
         WebDriverWait(chrome_driver, 10).until(EC.url_to_be(LOGIN_PAGE))
 
         # Введем в поле "Еmail" значение email пользователя
-        chrome_driver.find_element(*loc.FIELD_EMAIL).send_keys(registered_user["email"])
+        chrome_driver.find_element(*loc.FIELD_EMAIL).send_keys(RegisteredUser.email)
 
         # Введем в поле "Пароль" значение пароля пользователя
         chrome_driver.find_element(*loc.FIELD_PASSWORD).send_keys(
-            registered_user["password"]
+            RegisteredUser.password
         )
 
         # Добавим явное ожидание, что кнопка "Войти" кликабельна

@@ -3,24 +3,27 @@ from selenium.webdriver.support.wait import WebDriverWait
 from urls import REGISTRATION_PAGE, LOGIN_PAGE
 from used_locators import Locators as loc
 import random as r
+from generation_user_data import generate_user_data
 
 
 class TestRegistrationSuccess:
     # Проверка регистрации нового пользователя с валидными логином(email в формате логин@домен)
     # и паролем(длина более 6 символов)
-    def test_registration_valid_credentials_success(self, chrome_driver, user_data):
+    def test_registration_valid_credentials_success(self, chrome_driver):
+        # Вызываем метод для генерации тестовых данных пользователя
+        name, email, password = generate_user_data()
 
         # Откроем страницу регистрации в окне браузера
         chrome_driver.get(REGISTRATION_PAGE)
 
         # Введем в поле "Имя" значение имени пользователя
-        chrome_driver.find_element(*loc.FIELD_NAME).send_keys(user_data["name"])
+        chrome_driver.find_element(*loc.FIELD_NAME).send_keys(name)
 
         # Введем в поле "Еmail" значение email пользователя
-        chrome_driver.find_element(*loc.FIELD_EMAIL).send_keys(user_data["email"])
+        chrome_driver.find_element(*loc.FIELD_EMAIL).send_keys(email)
 
         # Введем в поле "Пароль" значение пароля пользователя
-        chrome_driver.find_element(*loc.FIELD_PASSWORD).send_keys(user_data["password"])
+        chrome_driver.find_element(*loc.FIELD_PASSWORD).send_keys(password)
 
         # Кликнем на кнопку "Зарегистрироваться"
         chrome_driver.find_element(*loc.REGISTRATION_BTN).click()
@@ -41,16 +44,18 @@ class TestRegistrationSuccess:
 class TestRegistrationInvalidPasswordError:
     # Проверка появления ошибки при регистрации нового пользователя с валидными логином(email в формате логин@домен)
     # и паролем, длина которого менее 6 символов
-    def test_registration_invalid_password_error(self, chrome_driver, user_data):
+    def test_registration_invalid_password_error(self, chrome_driver):
+        # Вызываем метод для генерации тестовых данных пользователя
+        name, email, _ = generate_user_data()
 
         # Откроем страницу регистрации в окне браузера
         chrome_driver.get(REGISTRATION_PAGE)
 
         # Введем в поле "Имя" значение имени пользователя
-        chrome_driver.find_element(*loc.FIELD_NAME).send_keys(user_data["name"])
+        chrome_driver.find_element(*loc.FIELD_NAME).send_keys(name)
 
         # Введем в поле "Еmail" значение email пользователя
-        chrome_driver.find_element(*loc.FIELD_EMAIL).send_keys(user_data["email"])
+        chrome_driver.find_element(*loc.FIELD_EMAIL).send_keys(email)
 
         # Сгенерируем переменную password с невалидным значением пароля пользователя (длина 5 символов)
         numbers_plus_letters = "1234567890abcdefghijklmnopqrstuvwxyz"

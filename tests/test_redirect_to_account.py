@@ -2,11 +2,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from urls import MAIN_PAGE, ACCOUNT_PAGE
 from used_locators import Locators as loc
+from registered_user_data import RegisteredUser
 
 
 class TestRedirectToAccount:
     # Проверка перехода в личный кабинет  по клику на «Личный кабинет».
-    def test_redirect_to_account_from_main(self, user_logged_driver, registered_user):
+    def test_redirect_to_account_from_main(self, user_logged_driver):
 
         # Откроем главную страницу в окне браузера как залогированный пользователь
         user_logged_driver.get(MAIN_PAGE)
@@ -27,10 +28,8 @@ class TestRedirectToAccount:
         )
 
         # Находим элемент содержащий данные о логине пользователя
-        email_field = user_logged_driver.find_element(
-            *loc.ACCOUNT_FIELD_EMAIL
-        )
+        email_field = user_logged_driver.find_element(*loc.ACCOUNT_FIELD_EMAIL)
 
         # Проверяем, что URL текущей страницы совпадает с ACCOUNT_PAGE и данные в поле "Логин" залогированного пользователя
-        assert email_field.get_attribute("value") == registered_user["email"]
+        assert email_field.get_attribute("value") == RegisteredUser.email
         assert user_logged_driver.current_url == ACCOUNT_PAGE
