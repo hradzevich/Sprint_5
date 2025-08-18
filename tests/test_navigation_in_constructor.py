@@ -73,6 +73,13 @@ class TestNavigationInConstructorToBuns:
         # Кликнем на подраздел "Начинки", чтобы сменить выбранный подраздел
         chrome_driver.find_element(*loc.CONSTRUCTOR_SUBSECTION_FILLINGS).click()
 
+        # Добавим явное ожидание, что подраздел "Булки" сменился на подраздел "Начинки"
+        WebDriverWait(chrome_driver, 10).until(
+            EC.text_to_be_present_in_element(
+                loc.CONSTRUCTOR_ACTIVE_SUBSECTION, "Начинки"
+            )
+        )
+
         # Кликнем на подраздел "Булки"
         chrome_driver.find_element(*loc.CONSTRUCTOR_SUBSECTION_BUNS).click()
 

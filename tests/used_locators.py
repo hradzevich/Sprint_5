@@ -31,7 +31,7 @@ class Locators:
     # Кнопка "Оформить заказ" на главной странице авторизованного пользователя
     PLACE_ORDER_BTN = (
         By.XPATH,
-        ".//*[@id='root']/div/main/section[2]/div/button[text()='Оформить заказ']",
+        ".//button[text()='Оформить заказ']",
     )
     # Сообщение о некорректном пароле на странице регистрации
     PASSWORD_ERROR_MESSAGE = (By.XPATH, ".//p[text()='Некорректный пароль']")
@@ -39,7 +39,7 @@ class Locators:
     # Кнопка «Войти в аккаунт» на главной странице
     GO_TO_ACCOUNT_MAIN_PAGE_BTN = (
         By.XPATH,
-        ".//*[@id='root']/div/main/section[2]/div/button[text()='Войти в аккаунт']",
+        ".//button[text()='Войти в аккаунт']",
     )
 
     # Кнопка "Войти" на странице регистрации
@@ -75,7 +75,7 @@ class Locators:
     # Поле "Логин" на на странице "Личный Кабинет"
     ACCOUNT_FIELD_EMAIL = (
         By.XPATH,
-        ".//ul/li//label[text()='Логин']/following-sibling::input[@disabled]",
+        ".//label[text()='Логин']/following-sibling::input[@disabled]",
     )
 
     # Логотип Stellar Burgers на других страницах, кроме главной
@@ -91,7 +91,7 @@ class Locators:
     )
 
     # Кпопка "Выход" на странице личного кабинета
-    LOGOUT_BTN = (By.XPATH, ".//ul/li/button[text()='Выход']")
+    LOGOUT_BTN = (By.XPATH, ".//button[text()='Выход']")
 
     # Название формы для входа "Вход" на странице логина
     LOGIN_FORM_TITLE = (By.XPATH, ".//div/h2[text()='Вход']")
