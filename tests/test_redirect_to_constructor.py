@@ -1,6 +1,6 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from urls import MAIN_PAGE, ACCOUNT_PAGE
+from data.urls import MAIN_PAGE, ACCOUNT_PAGE
 from used_locators import Locators as loc
 
 

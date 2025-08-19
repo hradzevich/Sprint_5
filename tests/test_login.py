@@ -1,8 +1,8 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from urls import *
+from data.urls import *
 from used_locators import Locators as loc
-from registered_user_data import RegisteredUser
+from data.registered_user_data import RegisteredUser
 
 
 class TestLoginViaLoginButton:

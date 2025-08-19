@@ -1,9 +1,9 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from urls import REGISTRATION_PAGE, LOGIN_PAGE
+from data.urls import REGISTRATION_PAGE, LOGIN_PAGE
 from used_locators import Locators as loc
 import random as r
-from generation_user_data import generate_user_data
+from data.generation_user_data import generate_user_data
 
 
 class TestRegistrationSuccess:
