@@ -6,7 +6,7 @@ import random as r
 from data.generation_user_data import generate_user_data
 
 
-class TestRegistrationSuccess:
+class TestRegistration:
     # Проверка регистрации нового пользователя с валидными логином(email в формате логин@домен)
     # и паролем(длина более 6 символов)
     def test_registration_valid_credentials_success(self, chrome_driver):
@@ -40,8 +40,6 @@ class TestRegistrationSuccess:
         assert chrome_driver.current_url == LOGIN_PAGE
         assert header_login_form.text == "Вход"
 
-
-class TestRegistrationInvalidPasswordError:
     # Проверка появления ошибки при регистрации нового пользователя с валидными логином(email в формате логин@домен)
     # и паролем, длина которого менее 6 символов
     def test_registration_invalid_password_error(self, chrome_driver):

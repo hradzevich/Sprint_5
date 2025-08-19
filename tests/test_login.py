@@ -5,7 +5,7 @@ from used_locators import Locators as loc
 from data.registered_user_data import RegisteredUser
 
 
-class TestLoginViaLoginButton:
+class TestLogin:
     # Проверка входа с главной страницы по кнопке «Войти в аккаунт»
     def test_login_from_main_page_via_login_button(self, chrome_driver):
 
@@ -44,8 +44,6 @@ class TestLoginViaLoginButton:
         assert chrome_driver.current_url == MAIN_PAGE
         assert place_order_button.is_displayed()
 
-
-class TestLoginViaAccountButton:
     # Проверка входа с главной страницы через кнопку «Личный кабинет»
     def test_login_from_main_via_account_button(self, chrome_driver):
 
@@ -84,8 +82,6 @@ class TestLoginViaAccountButton:
         assert chrome_driver.current_url == MAIN_PAGE
         assert place_order_button.is_displayed()
 
-
-class TestLoginViaRegistration:
     # Проверка входа через кнопку "Войти" в форме регистрации
     def test_login_from_registration(self, chrome_driver):
 
@@ -124,8 +120,6 @@ class TestLoginViaRegistration:
         assert chrome_driver.current_url == MAIN_PAGE
         assert place_order_button.is_displayed()
 
-
-class TestLoginViaPasswordReset:
     # Проверка входа через кнопку в форме восстановления пароля
     def test_login_via_password_reset(self, chrome_driver):
 

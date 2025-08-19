@@ -4,7 +4,7 @@ from data.urls import MAIN_PAGE
 from used_locators import Locators as loc
 
 
-class TestNavigationInConstructoToSauces:
+class TestNavigationInConstructor:
     # Проверка работы переходов к разделу «Соусы»
     def test_navigation_in_constructor_to_sauces(self, chrome_driver):
 
@@ -29,8 +29,6 @@ class TestNavigationInConstructoToSauces:
         # Проверяем, что выбран подраздел "Соусы"
         assert selected_section.text == "Соусы"
 
-
-class TestNavigationInConstructorToFillings:
     # Проверка работы переходов к разделу «Начинки»
     def test_navigation_in_constructor_to_fillings(self, chrome_driver):
 
@@ -55,8 +53,6 @@ class TestNavigationInConstructorToFillings:
         # Проверяем, что выбран подраздел "Начинки"
         assert selected_section.text == "Начинки"
 
-
-class TestNavigationInConstructorToBuns:
     # Проверка работы переходов к разделу «Булки»
     def test_navigation_in_constructor_to_buns(self, chrome_driver):
 
