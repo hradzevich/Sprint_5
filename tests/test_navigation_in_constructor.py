@@ -2,6 +2,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from data.urls import MAIN_PAGE
 from used_locators import Locators as loc
+from data.texts_data import *
 
 
 class TestNavigationInConstructor:
@@ -27,7 +28,7 @@ class TestNavigationInConstructor:
         )
 
         # Проверяем, что выбран подраздел "Соусы"
-        assert selected_section.text == "Соусы"
+        assert selected_section.text == CONSTRUCTOR_SECTION_SAUCES_TITLE
 
     # Проверка работы переходов к разделу «Начинки»
     def test_navigation_in_constructor_to_fillings(self, chrome_driver):
@@ -51,7 +52,7 @@ class TestNavigationInConstructor:
         )
 
         # Проверяем, что выбран подраздел "Начинки"
-        assert selected_section.text == "Начинки"
+        assert selected_section.text == CONSTRUCTOR_SECTION_FILLINGS_TITLE
 
     # Проверка работы переходов к разделу «Булки»
     def test_navigation_in_constructor_to_buns(self, chrome_driver):
@@ -85,4 +86,4 @@ class TestNavigationInConstructor:
         )
 
         # Проверяем, что выбран подраздел "Булки"
-        assert selected_section.text == "Булки"
+        assert selected_section.text == CONSTRUCTOR_SECTION_BUNS_TITLE

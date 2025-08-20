@@ -2,6 +2,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from data.urls import LOGIN_PAGE
 from used_locators import Locators as loc
+from data.texts_data import *
 
 
 class TestLogoutFromAccount:
@@ -26,4 +27,4 @@ class TestLogoutFromAccount:
 
         # Проверяем, что URL текущей страницы соответствует LOGIN_PAGE и название формы для логина "Вход" есть на странице
         assert user_logged_driver.current_url == LOGIN_PAGE
-        assert login_form_title.text == "Вход"
+        assert login_form_title.text == LOGIN_TITLE

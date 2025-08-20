@@ -4,6 +4,7 @@ from data.urls import REGISTRATION_PAGE, LOGIN_PAGE
 from used_locators import Locators as loc
 import random as r
 from data.generation_user_data import generate_user_data
+from data.texts_data import *
 
 
 class TestRegistration:
@@ -38,7 +39,7 @@ class TestRegistration:
 
         # Проверяем, что URL текущей страницы соответствует LOGIN_PAGE и название формы для логина "Вход" есть на странице
         assert chrome_driver.current_url == LOGIN_PAGE
-        assert header_login_form.text == "Вход"
+        assert header_login_form.text == LOGIN_TITLE
 
     # Проверка появления ошибки при регистрации нового пользователя с валидными логином(email в формате логин@домен)
     # и паролем, длина которого менее 6 символов
@@ -73,4 +74,4 @@ class TestRegistration:
         # Проверяем, что элемент ошибки присутсвует на странице и
         # URL текущей страницы соответствует REGISTRATION_PAGE(не изменился)
         assert chrome_driver.current_url == REGISTRATION_PAGE
-        assert "Некорректный пароль" in incorrect_password_error.text
+        assert INCORRECT_PASSWORD_MESSAGE in incorrect_password_error.text

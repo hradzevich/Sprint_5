@@ -2,6 +2,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from data.urls import MAIN_PAGE, ACCOUNT_PAGE
 from used_locators import Locators as loc
+from data.texts_data import *
 
 
 class TestRedirectToConstructor:
@@ -57,4 +58,4 @@ class TestRedirectToConstructor:
         # Проверяем, что URL текущей страницы совпадает с MAIN_PAGE и выбранный
         # на главной странице раздел соответствует разделу «Конструктор»
         assert user_logged_driver.current_url == MAIN_PAGE
-        assert section_active.text == "Конструктор"
+        assert section_active.text == CONSTRUCTOR_SECTION_TITLE
