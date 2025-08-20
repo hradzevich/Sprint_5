@@ -31,7 +31,7 @@ class TestRedirectToConstructor:
         # Проверяем, что URL текущей страницы совпадает с MAIN_PAGE и выбранный
         # на главной странице раздел соответствует разделу «Конструктор»
         assert user_logged_driver.current_url == MAIN_PAGE
-        assert section_active.text == "Конструктор"
+        assert section_active.text == CONSTRUCTOR_SECTION_TITLE
 
     #  Проверка перехода из личного кабинета в конструктор по клику на логотип Stellar Burgers
     def test_redirect_to_constructor_by_logo_click(self, user_logged_driver):
