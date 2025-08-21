@@ -1,3 +1,4 @@
+import pytest
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from data.urls import MAIN_PAGE
@@ -6,8 +7,39 @@ from data.texts_data import *
 
 
 class TestNavigationInConstructor:
-    # Проверка работы переходов к разделу «Соусы»
-    def test_navigation_in_constructor_to_sauces(self, chrome_driver):
+    # Параметризация переходов между разделами конструктора:
+    # start_locator / start_title — с какого раздела начинаем
+    # target_locator / target_title — в какой раздел переходим и что ожидаем
+    @pytest.mark.parametrize(
+        "start_locator, start_title, target_locator, target_title",
+        [
+            # Начинки -> Соусы
+            (
+                loc.CONSTRUCTOR_SUBSECTION_FILLINGS,
+                CONSTRUCTOR_SECTION_FILLINGS_TITLE,
+                loc.CONSTRUCTOR_SUBSECTION_SAUCES,
+                CONSTRUCTOR_SECTION_SAUCES_TITLE,
+            ),
+            # Соусы -> Начинки
+            (
+                loc.CONSTRUCTOR_SUBSECTION_SAUCES,
+                CONSTRUCTOR_SECTION_SAUCES_TITLE,
+                loc.CONSTRUCTOR_SUBSECTION_FILLINGS,
+                CONSTRUCTOR_SECTION_FILLINGS_TITLE,
+            ),
+            # Соусы -> Булки
+            (
+                loc.CONSTRUCTOR_SUBSECTION_SAUCES,
+                CONSTRUCTOR_SECTION_SAUCES_TITLE,
+                loc.CONSTRUCTOR_SUBSECTION_BUNS,
+                CONSTRUCTOR_SECTION_BUNS_TITLE,
+            ),
+        ],
+    )
+    # Проверка работы переходов к target разделу
+    def test_navigation_in_constructor(
+        self, chrome_driver, start_locator, start_title, target_locator, target_title
+    ):
 
         # Откроем главную страницу  в окне браузера
         chrome_driver.get(MAIN_PAGE)
@@ -19,71 +51,25 @@ class TestNavigationInConstructor:
             )
         )
 
-        # Кликнем на подраздел "Соусы"
-        chrome_driver.find_element(*loc.CONSTRUCTOR_SUBSECTION_SAUCES).click()
-
-        # Находим элемент выбранного подраздела в разделе "Конструктора"
-        selected_section = chrome_driver.find_element(
-            *loc.CONSTRUCTOR_ACTIVE_SUBSECTION
-        )
-
-        # Проверяем, что выбран подраздел "Соусы"
-        assert selected_section.text == CONSTRUCTOR_SECTION_SAUCES_TITLE
-
-    # Проверка работы переходов к разделу «Начинки»
-    def test_navigation_in_constructor_to_fillings(self, chrome_driver):
-
-        # Откроем главную страницу  в окне браузера
-        chrome_driver.get(MAIN_PAGE)
-
-        # Добавим явное ожидание, что выбран раздел "Конструктор"(атрибут aria-current="page")
+        # Кликнем на любой подраздел, чтобы сменить текущий подраздел(по умолчанию "Булки")
         WebDriverWait(chrome_driver, 10).until(
-            EC.text_to_be_present_in_element_attribute(
-                loc.CONSTRACTOR_HEADER_SECTION, "aria-current", "page"
-            )
-        )
+            EC.element_to_be_clickable(start_locator)
+        ).click()
 
-        # Кликнем на подраздел "Начинки"
-        chrome_driver.find_element(*loc.CONSTRUCTOR_SUBSECTION_FILLINGS).click()
-
-        # Находим элемент выбранного подраздела в разделе "Конструктора"
-        selected_section = chrome_driver.find_element(
-            *loc.CONSTRUCTOR_ACTIVE_SUBSECTION
-        )
-
-        # Проверяем, что выбран подраздел "Начинки"
-        assert selected_section.text == CONSTRUCTOR_SECTION_FILLINGS_TITLE
-
-    # Проверка работы переходов к разделу «Булки»
-    def test_navigation_in_constructor_to_buns(self, chrome_driver):
-
-        # Откроем главную страницу  в окне браузера
-        chrome_driver.get(MAIN_PAGE)
-
-        # Добавим явное ожидание, что выбран раздел "Конструктор"(атрибут aria-current="page")
-        WebDriverWait(chrome_driver, 10).until(
-            EC.text_to_be_present_in_element_attribute(
-                loc.CONSTRACTOR_HEADER_SECTION, "aria-current", "page"
-            )
-        )
-
-        # Кликнем на подраздел "Начинки", чтобы сменить выбранный подраздел
-        chrome_driver.find_element(*loc.CONSTRUCTOR_SUBSECTION_FILLINGS).click()
-
-        # Добавим явное ожидание, что подраздел "Булки" сменился на подраздел "Начинки"
+        # Добавим явное ожидание, что подраздел "Булки" сменился на выбранный подраздел 
         WebDriverWait(chrome_driver, 10).until(
             EC.text_to_be_present_in_element(
-                loc.CONSTRUCTOR_ACTIVE_SUBSECTION, "Начинки"
+                loc.CONSTRUCTOR_ACTIVE_SUBSECTION, start_title
             )
         )
 
-        # Кликнем на подраздел "Булки"
-        chrome_driver.find_element(*loc.CONSTRUCTOR_SUBSECTION_BUNS).click()
+        # Кликнем на target подраздел
+        chrome_driver.find_element(*target_locator).click()
 
         # Находим элемент выбранного подраздела в разделе "Конструктора"
         selected_section = chrome_driver.find_element(
             *loc.CONSTRUCTOR_ACTIVE_SUBSECTION
         )
 
-        # Проверяем, что выбран подраздел "Булки"
-        assert selected_section.text == CONSTRUCTOR_SECTION_BUNS_TITLE
+        # Проверяем, что выбран target подраздел
+        assert selected_section.text == target_title
